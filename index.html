@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>TODO App</title>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+
+    <style type="text/css">
+    * {
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+    form, h1, h2, p, ul {
+      margin-left: 10%;
+      width: 80%;
+    }
+    form {
+      padding: 1rem;
+      border: 1px gray solid;
+    }
+    label:after {
+      content: "";
+      display: table;
+      margin-bottom: 1rem;
+    }
+    select {
+      display: table;
+      margin: 1rem 0 1rem 0;
+    }
+    h2 {
+      color: green;
+      text-decoration: underline;
+    }
+    .task-box li {
+      padding: .5rem;
+    }
+  </style>
+
+  </head>
+  <body>
+    <h1>TODO App</h1>
+    <p>Enter task information and submit to create a task list. Submit as many tasks as you like!</p>
+    <form name="task" action="index.html" method="post">
+      <label>
+        What is the task?
+        <input type="text" name="task">
+      </label>
+
+      <fieldset>
+        <legend>Who is the task assigned to? </legend>
+        <label>
+          <input type="radio" name="taskDoer" id="jeremy" value="Jeremy">
+          Jeremy
+        </label>
+        <label>
+          <input type="radio" name="taskDoer" id="jennifer" value="Jennifer">
+          Jennifer
+        </label>
+        <label>
+          <input type="radio" name="taskDoer" id="sid" value="Sid">
+          Sid
+        </label>
+      </fieldset>
+
+      <select class="" name="taskDifficulty">
+        <option value="">Select task difficulty</option>
+        <option value="easy">Easy</option>
+        <option value="moderate">Moderate</option>
+        <option value="hard">Hard</option>
+      </select>
+
+      <input type="submit" >
+    </form>
+
+
+    <div id="chart_div"></div>
+
+    <div id="task-list" class="task-box"></div>
+
+
+  </body>
+</html>
