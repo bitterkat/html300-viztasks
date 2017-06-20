@@ -1,116 +1,99 @@
 // Load the Visualization API and the corechart package.
 // We need this for all chart library usage in this file.
 google.charts.load('current', {'packages':['corechart']});
-
 // Set a callback to run when the Google Visualization API is loaded- trigger drawing the bar chart
 google.charts.setOnLoadCallback(drawBasic);
 
-var tasks = [];
-
-var taskCounter = {
-  j1: 0,
-  j2: 0,
-  s1: 0
-}
+var tasks = []
+var jeremy = []
+var jennifer = []
+var sid = []
 
 window.onload = function() {
-  drawTasks();
-  var form = document.querySelector("form");
-  form.onsubmit = getTasks;
+  drawTasks()
+  var form = document.querySelector("form")
+  form.onsubmit = getTasks
 }
 
 function getTasks() {
-  event.preventDefault();
-  var form = document.querySelector("form");
+  event.preventDefault()
+  var form = document.querySelector("form")
 
-  // create a new task object with form values
   var newTasks = {
     task: form.task.value,
     taskDoer: form.taskDoer.value,
-    taskDifficulty: form.taskDifficulty.value}
-
-  // insert new tasks object into tasks
-  tasks.push(newTasks);
-  // taskCounter(tasks);
-  vote();
-  drawTasks();
-  //clear the form
-  form.reset();
+    taskDifficulty: form.taskDifficulty.value
   }
+  tasks.push(newTasks)
 
-function vote() {
-  if (document.getElementById('jeremy').checked == true) {
-    taskCounter.j1 = taskCounter.j1 + 1;
-  } else if (document.getElementById('jennifer').checked == true) {
-    taskCounter.j2 = taskCounter.j2 + 1;
-  } else if (document.getElementById('sid').checked == true) {
-    taskCounter.s1 = taskCounter.s1 + 1;
-  }
-  // redraw the chart
-  drawBasic();
+  // track task count by task doer
+  fetchDoers()
+  // redraw the task list
+  drawTasks()
+  form.reset()
+}
+
+// Fetches length of filtered array (by task doer name)
+function fetchDoers() {
+  jeremy = tasks.filter(function(o) { return o.taskDoer == "Jeremy"})
+  jennifer = tasks.filter(function(o) { return o.taskDoer == "Jennifer"})
+  sid = tasks.filter(function(o) { return o.taskDoer == "Sid"})
 }
 
 // Draws a bar chart
-// Documentation: https://developers.google.com/chart/interactive/docs/gallery/columnchart
 function drawBasic() {
-  var data = new google.visualization.DataTable();
-  data.addColumn('string', "Task Doer");
-  data.addColumn('number', 'Count');
+  var data = new google.visualization.DataTable()
+  data.addColumn('string', '')
+  data.addColumn('number', 'Count')
 
-  // Numeric values for rows are pulled from our global variable that holds counts for each topping
   data.addRows([
-    ['Jeremy', taskCounter.j1],
-    ['Jennifer', taskCounter.j2],
-    ['Sid', taskCounter.s1]
-  ]);
+    ['Jeremy', jeremy.length],
+    ['Jennifer', jennifer.length],
+    ['Sid', sid.length]
+  ])
 
   var options = {
     title: 'Who is the busiest Task Doer?',
     hAxis: {
-      title: 'Task Doer'
+      title: ''
     },
     vAxis: {
       title: 'Number of Tasks Assigned'
     }
-  };
+  }
 
   var chart = new google.visualization.ColumnChart(
-    document.getElementById('chart_div'));
+    document.getElementById('chart_div'))
 
-  chart.draw(data, options);
+  chart.draw(data, options)
 }
 
 // draws a list of tasks
 function drawTasks() {
-  event.preventDefault();
+  event.preventDefault()
+  var parent = document.getElementById('task-list')
 
-  var parent = document.getElementById('task-list');
-
-  //clear out existing contents
-  parent.innerHTML = "";
-
-  //create a <h2> node
-  var h2 = document.createElement("h2");
-
+  // //clear out existing contents
+  parent.innerHTML = ""
+  var h2 = document.createElement("h2")
+  h2.innerHTML = "Task List:"
+  parent.appendChild(h2)
   // create a <ul> node
-  var ul = document.createElement("ul");
+  var ul = document.createElement("ul")
 
   for (var i = 0; i < tasks.length; i++) {
-
   // create an <li> node
-  var li = document.createElement("li");
+  var li = document.createElement("li")
 
   // add the task string to the li
-  li.innerHTML = "<strong>task:</strong> "+tasks[i].task+", <strong>assigned to:</strong> "+tasks[i].taskDoer+", <strong>difficulty level:</strong> "+tasks[i].taskDifficulty;
-
-  // add h2
-  h2.innerHTML = "TASK LIST";
+  li.innerHTML = `${tasks[i].taskDoer} is going to ${tasks[i].task}, which is a ${tasks[i].taskDifficulty} task.`
 
   // append li to ul
-  ul.appendChild(li);
+  ul.appendChild(li)
   }
+  // append the ul to the #task container
+  parent.appendChild(ul)
 
-  // append the h2 and ul to the #task container
-  parent.appendChild(h2);
-  parent.appendChild(ul);
+  // redraw the chart
+  drawBasic()
 }

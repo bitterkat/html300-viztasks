@@ -3,50 +3,27 @@
   <head>
     <meta charset="utf-8">
     <title>TODO App</title>
-
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://use.fontawesome.com/0098f99e40.js"></script>
     <script type="text/javascript" src="script.js"></script>
-
-    <style type="text/css">
-    * {
-      box-sizing: border-box;
-      font-family: sans-serif;
-    }
-    form, h1, h2, p, ul {
-      margin-left: 10%;
-      width: 80%;
-    }
-    form {
-      padding: 1rem;
-      border: 1px gray solid;
-    }
-    label:after {
-      content: "";
-      display: table;
-      margin-bottom: 1rem;
-    }
-    select {
-      display: table;
-      margin: 1rem 0 1rem 0;
-    }
-    h2 {
-      color: green;
-      text-decoration: underline;
-    }
-    .task-box li {
-      padding: .5rem;
-    }
-  </style>
-
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
   </head>
   <body>
-    <h1>TODO App</h1>
+    <main>
+
+
+    <h1><i class="fa fa-hand-o-right" aria-hidden="true"></i>TODO App</h1>
     <p>Enter task information and submit to create a task list. Submit as many tasks as you like!</p>
-    <form name="task" action="index.html" method="post">
-      <label>
-        What is the task?
-        <input type="text" name="task">
-      </label>
+
+    <form name="task">
+      <fieldset>
+        <legend>What is the task?</legend>
+        <label>
+          <input type="text" name="task">
+        </label>
+      </fieldset>
 
       <fieldset>
         <legend>Who is the task assigned to? </legend>
@@ -64,21 +41,22 @@
         </label>
       </fieldset>
 
-      <select class="" name="taskDifficulty">
-        <option value="">Select task difficulty</option>
-        <option value="easy">Easy</option>
-        <option value="moderate">Moderate</option>
-        <option value="hard">Hard</option>
-      </select>
+      <fieldset>
+        <legend>Select task difficulty</legend>
+        <select class="" name="taskDifficulty">
+          <option value="easy">Easy</option>
+          <option value="moderate">Moderate</option>
+          <option value="hard">Hard</option>
+        </select>
+            </fieldset>
 
-      <input type="submit" >
+      <input type="submit" value="Add Task!" class="submit">
     </form>
-
-
-    <div id="chart_div"></div>
 
     <div id="task-list" class="task-box"></div>
 
+    <div id="chart_div"></div>
 
+    </main>
   </body>
 </html>
