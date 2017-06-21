@@ -12,51 +12,34 @@
   </head>
   <body>
     <main>
-
-
-    <h1><i class="fa fa-hand-o-right" aria-hidden="true"></i>TODO App</h1>
-    <p>Enter task information and submit to create a task list. Submit as many tasks as you like!</p>
-
+    <div class="taskbox">
+    <h1>Cat Tasks</h1>
     <form name="task">
-      <fieldset>
-        <legend>What is the task?</legend>
-        <label>
-          <input type="text" name="task">
-        </label>
-      </fieldset>
-
-      <fieldset>
-        <legend>Who is the task assigned to? </legend>
-        <label>
-          <input type="radio" name="taskDoer" id="jeremy" value="Jeremy">
-          Jeremy
-        </label>
-        <label>
-          <input type="radio" name="taskDoer" id="jennifer" value="Jennifer">
-          Jennifer
-        </label>
-        <label>
-          <input type="radio" name="taskDoer" id="sid" value="Sid">
-          Sid
-        </label>
-      </fieldset>
-
-      <fieldset>
-        <legend>Select task difficulty</legend>
-        <select class="" name="taskDifficulty">
-          <option value="easy">Easy</option>
-          <option value="moderate">Moderate</option>
-          <option value="hard">Hard</option>
-        </select>
-            </fieldset>
-
-      <input type="submit" value="Add Task!" class="submit">
-    </form>
+        <hr>
+      <div class="assigned-to">
+        <div class="assign-to-legend">Which cat is doing this task?</div>
+          <input type="radio" name="taskDoer" id="radioOne" value="Gus">
+            <label for="radioOne" class="radio">Gus</label>
+          <input type="radio" name="taskDoer" id="radioTwo" value="Vespa">
+            <label for="radioTwo" class="radio">Vespa</label>
+      </div>
+          <hr>
+      <label id="icon"><i class="fa fa-hand-o-right" aria-hidden="true"></i></label>
+        <input type="text" name="task" placeholder="enter task here">
+          <hr>
+        <div class="assign-to-legend">Select task difficulty</div>
+          <select name="taskDifficulty">
+            <option value="easy">Easy</option>
+            <option value="moderate">Moderate</option>
+            <option value="hard">Hard</option>
+          </select>
+            <hr>
+        <input type="submit" value="Add Task!" class="submit">
+      </form>
+    </div>
 
     <div id="task-list" class="task-box"></div>
-
     <div id="chart_div"></div>
-
     </main>
   </body>
 </html>

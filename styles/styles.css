@@ -1,5 +1,53 @@
-* {
+/** {
   box-sizing: border-box;
+}*/
+
+body, form, fieldset, input, textarea, p {
+  padding:0;
+  margin:0;}
+
+fieldset, img {
+  border:0
+}
+
+ol, ul, li {
+  list-style:none
+}
+
+:focus {
+  outline:none
+}
+
+body, input, textarea, select {
+  font: 14px/21px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+  font-size: 16px;
+  color: #4c4c4c;
+}
+
+p {
+  font-size: 12px;
+  width: 150px;
+  display: inline-block;
+  margin-left: 18px;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 300;
+  color: #4c4c4c;
+  text-align: center;
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
+
+legend {
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+html{
+  background-color: #ffffff;
 }
 
 main {
@@ -7,41 +55,165 @@ main {
   width: 70%;
 }
 
+.taskbox {
+  margin: 20px auto;
+  width: 343px;
+  height: 375px;
+  -webkit-border-radius: 8px/7px;
+  -moz-border-radius: 8px/7px;
+  border-radius: 8px/7px;
+  background-color: #ebebeb;
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.31);
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.31);
+  box-shadow: 1px 2px 5px rgba(0,0,0,.31);
+  border: solid 1px #cbc9c9;
+}
+
+input[type=radio] {
+    visibility: hidden;
+  }
+
 form {
-  padding: 1rem;
+  margin: 0 30px;
 }
 
-select {
-  margin-left: 1.25rem;
+label.radio {
+	cursor: pointer;
+  text-indent: 35px;
+  overflow: visible;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 15px;
 }
 
-fieldset {
-  margin: 1.25rem;
-  padding: 1rem;
+label.radio:before {
+  background: #3a57af;
+  content:'';
+  position: absolute;
+  top:2px;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
 }
 
-label:after {
-  content: "";
-  display: table;
-  margin-bottom: 1rem;
+label.radio:after {
+	opacity: 0;
+	content: '';
+	position: absolute;
+	width: 0.5em;
+	height: 0.25em;
+	background: transparent;
+	top: 7.5px;
+	left: 4.5px;
+	border: 3px solid #ffffff;
+	border-top: none;
+	border-right: none;
+
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+
+input[type=radio]:checked + label:after {
+	opacity: 1;
+}
+
+hr{
+  color: #a9a9a9;
+  opacity: 0.3;
+}
+
+input[type=text]{
+  width: 200px;
+  height: 39px;
+  -webkit-border-radius: 0 4px 4px 0/5px 5px 4px 4px;
+  -moz-border-radius: 0 4px 4px 0/0 0 4px 4px;
+  border-radius: 0 4px 4px 0/5px 5px 4px 4px;
+  background-color: #fff;
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  border: solid 1px #cbc9c9;
+  margin-left: -5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+
+#icon {
+  display: inline-block;
+  width: 30px;
+  background-color: #3a57af;
+  padding: 8px 0 8px 15px;
+  margin-left: 15px;
+  -webkit-border-radius: 4px 0 0 4px;
+  -moz-border-radius: 4px 0 0 4px;
+  border-radius: 4px 0 0 4px;
+  color: white;
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  border: solid 0 #cbc9c9;
+}
+
+.assigned-to {
+  margin-left: 8px;
+  margin-top: 20px;
 }
 
 .submit {
-  background-color: black;
+  font-size: 14px;
+  font-weight: 600;
   color: white;
-  padding: .5rem;
-  margin-left: 1rem;
+  margin: 10px 8px 20px 65px;
+  text-decoration: none;
+  width: 150px; height: 35px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #3a57af;
+  -webkit-box-shadow: 0 3px rgba(58,87,175,.75);
+  -moz-box-shadow: 0 3px rgba(58,87,175,.75);
+  box-shadow: 0 3px rgba(58,87,175,.75);
+  transition: all 0.1s linear 0s;
+  top: 0;
+  position: relative;
+}
+
+.submit:hover {
+  top: 3px;
+  background-color:#2e458b;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.assign-to-legend {
+  margin-bottom: .5rem;
+  text-align: center;
+}
+
+select {
+  width: 100px;
+  padding: 10px;
+  font-size: 18px;
+  margin-left: 95px;
 }
 
 #task-list {
-  margin: 1rem 0 1rem 0;
-  background-color: #ccc;
-  border: 1px black solid;
-  padding: 1rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  background-color: #F2F1F1;
+  padding: .25rem 0 .25rem 1rem;
   font-family: 'Permanent Marker', cursive;
-  font-size: .90rem;
 }
 .task-box li {
   padding: .25rem;
   text-decoration: underline;
+  font-size: 14px;
 }

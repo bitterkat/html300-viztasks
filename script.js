@@ -5,21 +5,20 @@ google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawBasic);
 
 var tasks = []
-var jeremy = []
-var jennifer = []
-var sid = []
+var gus = []
+var vespa = []
 
 window.onload = function() {
   drawTasks()
-  var form = document.querySelector("form")
+  let form = document.querySelector('form')
   form.onsubmit = getTasks
 }
 
 function getTasks() {
   event.preventDefault()
-  var form = document.querySelector("form")
+  let form = document.querySelector('form')
 
-  var newTasks = {
+  let newTasks = {
     task: form.task.value,
     taskDoer: form.taskDoer.value,
     taskDifficulty: form.taskDifficulty.value
@@ -28,28 +27,28 @@ function getTasks() {
 
   // track task count by task doer
   fetchDoers()
+
   // redraw the task list
   drawTasks()
   form.reset()
 }
 
-// Fetches length of filtered array (by task doer name)
+// filters array (by task doer name)
 function fetchDoers() {
-  jeremy = tasks.filter(function(o) { return o.taskDoer == "Jeremy"})
-  jennifer = tasks.filter(function(o) { return o.taskDoer == "Jennifer"})
-  sid = tasks.filter(function(o) { return o.taskDoer == "Sid"})
+  gus = tasks.filter(function(o) { return o.taskDoer == 'Gus'})
+  vespa = tasks.filter(function(o) { return o.taskDoer == 'Vespa'})
 }
 
 // Draws a bar chart
 function drawBasic() {
-  var data = new google.visualization.DataTable()
+  let data = new google.visualization.DataTable()
   data.addColumn('string', '')
   data.addColumn('number', 'Count')
 
+  // uses filtered array length to keep task count
   data.addRows([
-    ['Jeremy', jeremy.length],
-    ['Jennifer', jennifer.length],
-    ['Sid', sid.length]
+    ['Gus', gus.length],
+    ['Vespa', vespa.length],
   ])
 
   var options = {
@@ -73,7 +72,7 @@ function drawTasks() {
   event.preventDefault()
   var parent = document.getElementById('task-list')
 
-  // //clear out existing contents
+  //clear out existing contents
   parent.innerHTML = ""
   var h2 = document.createElement("h2")
   h2.innerHTML = "Task List:"
@@ -86,7 +85,7 @@ function drawTasks() {
   var li = document.createElement("li")
 
   // add the task string to the li
-  li.innerHTML = `${tasks[i].taskDoer} is going to ${tasks[i].task}, which is a ${tasks[i].taskDifficulty} task.`
+  li.innerHTML = `${tasks[i].taskDoer} is going to ${tasks[i].task}. This task is ${tasks[i].taskDifficulty}!`
 
   // append li to ul
   ul.appendChild(li)
