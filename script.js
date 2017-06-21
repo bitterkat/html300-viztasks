@@ -48,7 +48,7 @@ function drawBasic() {
   // uses filtered array length to keep task count
   data.addRows([
     ['Gus', gus.length],
-    ['Vespa', vespa.length],
+    ['Vespa', vespa.length]
   ])
 
   var options = {
@@ -73,16 +73,16 @@ function drawTasks() {
   var parent = document.getElementById('task-list')
 
   //clear out existing contents
-  parent.innerHTML = ""
-  var h2 = document.createElement("h2")
-  h2.innerHTML = "Task List:"
+  parent.innerHTML = ''
+  var h2 = document.createElement('h2')
+  h2.innerHTML = 'Task List:'
   parent.appendChild(h2)
   // create a <ul> node
-  var ul = document.createElement("ul")
+  var ul = document.createElement('ul')
 
   for (var i = 0; i < tasks.length; i++) {
   // create an <li> node
-  var li = document.createElement("li")
+  var li = document.createElement('li')
 
   // add the task string to the li
   li.innerHTML = `${tasks[i].taskDoer} is going to ${tasks[i].task}. This task is ${tasks[i].taskDifficulty}!`
